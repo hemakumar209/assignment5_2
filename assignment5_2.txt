@@ -1,0 +1,39 @@
+1. Calculate the P Value for the test in Problem 2.
+    Ans:
+      >mytable<-table(data$trans)
+
+      >chisq.test(mytable, p = rep(1/2, 2))
+
+Chi-squared test for given probabilities
+
+data:  mytable
+X-squared = 27.35, df = 1, p-value = 1.697e-07
+
+
+
+2. How do you test the proportions and compare against hypothetical props? Test Hypothesis: proportion
+of automatic cars is 40%.
+
+   Ans:
+    >library(ggplot2)
+    >data<-data.frame(mpg)
+    >head (data)
+
+    >table(data$trans)
+
+    >data$trans<-revalue(data$trans,c("auto(av)"="auto","auto(l3)"="auto","auto(l4)"="auto",
+                         "auto(l5)"="auto","auto(l6)"="auto","auto(s4)"="auto",
+                         "auto(s5)"="auto","auto(s6)"="auto","manual(m5)"="manual",
+                         "manual(m6)"="manual"))
+
+    >mytable<-table(data$trans)
+    >mytable
+
+   #test for propotions
+    >propotions<-prop.test(x = c(157, 77), n = c(234, 234))
+   
+  #Test Hypothes: proportion is automatic cars is 40%
+
+   >prop.test(157,234,p=0.4)
+
+   
